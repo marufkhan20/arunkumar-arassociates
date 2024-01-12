@@ -1,0 +1,25 @@
+https://hdfc.devendralegal.com/
+Username = admin
+Pass = 12345678
+
+Zeptomail credentials
+Id = legal.arunkumarassociates@gmail.com
+Pass = Hdfc@1990!!
+
+Interakt Credentials
+Id = legal.arunkumarassociates@gmail.com
+Pass = Hdfc@1990!!
+
+We'll send you an Excel file and word format for the pdf templete by the end of the day.
+
+// for dashboard
+1. Total email sends
+2. Total whatsapp sends
+3. email sending status
+4. failed/success notification
+5. whatsapp message sending status
+
+
+// vps credentials
+srv461610.hstgr.cloud
+326040@#Arun
