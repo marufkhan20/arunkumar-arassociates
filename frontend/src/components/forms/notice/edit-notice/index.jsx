@@ -1,11 +1,10 @@
-"use client";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetNoticeQuery,
   useUpdateNoticeMutation,
-} from "@/features/notice/noticeApi";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+} from "../../../../app/features/notice/noticeApi";
 import Address from "./tabs/Address";
 import Address2 from "./tabs/Address2";
 import CustomerInformation from "./tabs/CustomerInformation";
@@ -23,7 +22,7 @@ const EditNotice = () => {
   const Tab = tabs[activeTab];
   const [noticeData, setNoticeData] = useState({});
 
-  const router = useRouter();
+  const router = useNavigate();
 
   const { id } = useParams();
 
@@ -43,7 +42,7 @@ const EditNotice = () => {
   useEffect(() => {
     if (!isLoading && updatedNotice?._id) {
       toast.success("Notice Updated Successfully.");
-      router.push("/forms/notice");
+      router("/forms/notice");
     }
   }, [updatedNotice, isLoading, router]);
 

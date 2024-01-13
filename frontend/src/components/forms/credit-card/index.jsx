@@ -1,12 +1,11 @@
-"use client";
-import Loading from "@/components/shared/Loading";
-import Table from "@/components/shared/Table";
-import { useDeleteCreditCardMutation } from "@/features/creditCard/creditCardApi";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaFilePdf } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useDeleteCreditCardMutation } from "../../../app/features/creditCard/creditCardApi";
+import Loading from "../../../components/shared/Loading";
+import Table from "../../../components/shared/Table";
 
 const CreditCard = ({ creditCards, isLoading, refetch }) => {
   const [limit, setLimit] = useState(10);
@@ -77,7 +76,7 @@ const CreditCard = ({ creditCards, isLoading, refetch }) => {
             </span>
             <div className="py-3 pr-4 flex items-center gap-2">
               <Link
-                href={`/forms/credit-card/edit-credit-card/${creditCard?._id}`}
+                to={`/forms/credit-card/edit-credit-card/${creditCard?._id}`}
                 className="rounded py-[6px] px-2 bg-primary text-white cursor-pointer"
               >
                 <MdEdit />
@@ -89,8 +88,9 @@ const CreditCard = ({ creditCards, isLoading, refetch }) => {
                 {loading ? <Loading className="w-4 h-4" /> : <MdDelete />}
               </button>
               <a
-                href={`${process.env.NEXT_PUBLIC_API_URL}${creditCard?.pdfLink}`}
+                to={`${process.env.REACT_APP_API_URL}${creditCard?.pdfLink}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 <FaFilePdf />
               </a>

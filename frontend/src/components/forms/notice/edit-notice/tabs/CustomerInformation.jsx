@@ -1,9 +1,8 @@
-"use client";
-import Button from "@/components/ui/Button";
-import Error from "@/components/ui/Error";
-import Input from "@/components/ui/Input";
-import Label from "@/components/ui/Label";
 import { useEffect, useState } from "react";
+import Button from "../../../../../components/ui/Button";
+import Error from "../../../../../components/ui/Error";
+import Input from "../../../../../components/ui/Input";
+import Label from "../../../../../components/ui/Label";
 
 const CustomerInformation = ({
   activeTab,

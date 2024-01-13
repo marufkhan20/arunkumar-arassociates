@@ -1,6 +1,5 @@
-"use client";
-import Input from "@/components/ui/Input";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import Input from "../ui/Input";
 import Loading from "./Loading";
 
 const Table = ({

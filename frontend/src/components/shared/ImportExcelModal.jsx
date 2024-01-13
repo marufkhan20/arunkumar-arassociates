@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { LuPencil } from "react-icons/lu";
 import Button from "../ui/Button";

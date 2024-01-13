@@ -1,8 +1,8 @@
-import { userLoggedOut } from "@/features/auth/authSlice";
 import toast from "react-hot-toast";
 import { FaBars } from "react-icons/fa6";
 import { RiSearchLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
+import { userLoggedOut } from "../../app/features/auth/authSlice";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 

@@ -1,12 +1,11 @@
-"use client";
-import Loading from "@/components/shared/Loading";
-import Table from "@/components/shared/Table";
-import { useDeleteNoticeMutation } from "@/features/notice/noticeApi";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaFilePdf } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useDeleteNoticeMutation } from "../../../app/features/notice/noticeApi";
+import Loading from "../../../components/shared/Loading";
+import Table from "../../../components/shared/Table";
 
 const Notice = ({ refetch, notices, isLoading }) => {
   const [limit, setLimit] = useState(10);
@@ -74,7 +73,7 @@ const Notice = ({ refetch, notices, isLoading }) => {
             <span className="py-3">{notice?.campDate}</span>
             <div className="py-3 pr-4 flex items-center gap-2">
               <Link
-                href={`/forms/notice/edit-notice/${notice?._id}`}
+                to={`/forms/notice/edit-notice/${notice?._id}`}
                 className="rounded py-[6px] px-2 bg-primary text-white cursor-pointer"
               >
                 <MdEdit />
@@ -86,8 +85,9 @@ const Notice = ({ refetch, notices, isLoading }) => {
                 {loading ? <Loading className="w-4 h-4" /> : <MdDelete />}
               </button>
               <a
-                href={`${process.env.NEXT_PUBLIC_API_URL}${notice?.pdfLink}`}
+                href={`${process.env.REACT_APP_API_URL}${notice?.pdfLink}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 <FaFilePdf />
               </a>

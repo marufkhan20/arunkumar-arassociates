@@ -1,8 +1,7 @@
-"use client";
-import { useCreateCreditCardMutation } from "@/features/creditCard/creditCardApi";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useCreateCreditCardMutation } from "../../../../app/features/creditCard/creditCardApi";
 import Tab1 from "./tabs/Tab1";
 import Tab2 from "./tabs/Tab2";
 import Tab3 from "./tabs/Tab3";
@@ -18,7 +17,7 @@ const AddCreditCard = () => {
   const Tab = tabs[activeTab];
   const [creditCardData, setCreditCardData] = useState({});
 
-  const router = useRouter();
+  const router = useNavigate();
 
   // create new credit card
   const [createCreditCard, { data: newCreditCard, isLoading }] =
@@ -27,7 +26,7 @@ const AddCreditCard = () => {
   useEffect(() => {
     if (!isLoading && newCreditCard?._id) {
       toast.success("Credit Card Created Successfully.");
-      router.push("/forms/credit-card");
+      router("/forms/credit-card");
     }
   }, [newCreditCard, isLoading, router]);
 

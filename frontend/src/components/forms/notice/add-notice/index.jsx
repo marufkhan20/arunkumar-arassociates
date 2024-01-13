@@ -1,8 +1,7 @@
-"use client";
-import { useCreateNoticeMutation } from "@/features/notice/noticeApi";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useCreateNoticeMutation } from "../../../../app/features/notice/noticeApi";
 import Address from "./tabs/Address";
 import Address2 from "./tabs/Address2";
 import CustomerInformation from "./tabs/CustomerInformation";
@@ -20,7 +19,7 @@ const AddNotice = () => {
   const Tab = tabs[activeTab];
   const [noticeData, setNoticeData] = useState({});
 
-  const router = useRouter();
+  const router = useNavigate();
 
   // create new notice
   const [createNotice, { data: newNotice, isLoading }] =
@@ -30,7 +29,7 @@ const AddNotice = () => {
     console.log("new notice", newNotice);
     if (!isLoading && newNotice?._id) {
       toast.success("Notice Created Successfully.");
-      router.push("/forms/notice");
+      router("/forms/notice");
     }
   }, [newNotice, isLoading, router]);
 

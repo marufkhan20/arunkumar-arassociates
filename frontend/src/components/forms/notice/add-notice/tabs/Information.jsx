@@ -1,9 +1,8 @@
-"use client";
-import Button from "@/components/ui/Button";
-import Error from "@/components/ui/Error";
-import Input from "@/components/ui/Input";
-import Label from "@/components/ui/Label";
 import { useState } from "react";
+import Button from "../../../../../components/ui/Button";
+import Error from "../../../../../components/ui/Error";
+import Input from "../../../../../components/ui/Input";
+import Label from "../../../../../components/ui/Label";
 
 const Information = ({ activeTab, setActiveTab, setDataHandler }) => {
   const [loanNo, setLoanNo] = useState("");

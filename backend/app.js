@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 const cors = require("cors");
 const {
   authRoutes,
@@ -30,7 +31,7 @@ app.use(express.json({ limit: "200mb" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // set public folder
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // all routes
 app.use("/api/auth", authRoutes);
@@ -38,9 +39,13 @@ app.use("/api/credit-cards", creditCardRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/campaigns", campaignRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-app.use("/", (req, res) => {
-  res.json({ message: "Hello World" });
-});
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "/public/storage/uploads"))
+);
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
+);
 
 // database connection
 mongoose

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utills";
-import Link from "next/link";
+import { Link } from "react-router-dom";
+import { cn } from "../../lib/utills";
 import Loading from "../shared/Loading";
 
 const Button = ({
@@ -20,7 +20,7 @@ const Button = ({
       onClick={onClick}
     >
       {href ? (
-        <Link href={href}>{children}</Link>
+        <Link to={href}>{children}</Link>
       ) : loading ? (
         <Loading className="w-7 h-7" />
       ) : (

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utills";
+import { cn } from "../../lib/utills";
 
 const Loading = ({ type = "", className = "" }) => {
   return type === "secondary" ? (

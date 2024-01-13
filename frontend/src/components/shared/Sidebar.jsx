@@ -1,14 +1,13 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsFileEarmarkText } from "react-icons/bs";
 import { FaChevronDown } from "react-icons/fa6";
 import { FiHome } from "react-icons/fi";
 import { GoHistory } from "react-icons/go";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ openSidebar, setOpenSidebar }) => {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
+  console.log("pathname", pathname);
   const [openMenu, setOpenMenu] = useState("home");
   const [openSubMenu, setOpenSubMenu] = useState("");
 
@@ -34,12 +33,12 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
         className={`hidden lg:block min-w-[280px] min-h-screen overflow-auto p-5 bg-white border-r`}
       >
         <h2 className="text-2xl">
-          <Link href="/">TBM</Link>
+          <Link to="/">TBM</Link>
         </h2>
         <ul className="mt-10 flex flex-col gap-1">
           <li>
             <Link
-              href="/"
+              to="/"
               className={`flex w-full items-center gap-3 px-3 py-2 rounded-[7px] transition-all ${
                 openMenu === "home"
                   ? "bg-primary text-white"
@@ -72,7 +71,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
             >
               <li>
                 <Link
-                  href="/forms/notice"
+                  to="/forms/notice"
                   className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                     openSubMenu === 1
                       ? "text-primary gap-5 active"
@@ -85,7 +84,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
               </li>
               <li>
                 <Link
-                  href="/forms/credit-card"
+                  to="/forms/credit-card"
                   className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                     openSubMenu === 2
                       ? "text-primary gap-5 active"
@@ -121,7 +120,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
             >
               <li>
                 <Link
-                  href="/campaign/notice"
+                  to="/campaign/notice"
                   className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                     openSubMenu === 3
                       ? "text-primary gap-5 active"
@@ -134,7 +133,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
               </li>
               <li>
                 <Link
-                  href="/campaign/credit-card"
+                  to="/campaign/credit-card"
                   className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                     openSubMenu === 4
                       ? "text-primary gap-5 active"
@@ -162,12 +161,12 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
           onClick={(event) => event.stopPropagation()}
         >
           <h2 className="text-2xl">
-            <Link href="/">TBM</Link>
+            <Link to="/">TBM</Link>
           </h2>
           <ul className="mt-10 flex flex-col gap-1">
             <li>
               <Link
-                href="/"
+                to="/"
                 className={`flex w-full items-center gap-3 px-3 py-2 rounded-[7px] transition-all ${
                   openMenu === "home"
                     ? "bg-primary text-white"
@@ -202,7 +201,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
               >
                 <li>
                   <Link
-                    href="/forms/notice"
+                    to="/forms/notice"
                     className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                       openSubMenu === 1
                         ? "text-primary gap-5 active"
@@ -215,7 +214,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
                 </li>
                 <li>
                   <Link
-                    href="/forms/credit-card"
+                    to="/forms/credit-card"
                     className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                       openSubMenu === 2
                         ? "text-primary gap-5 active"
@@ -253,7 +252,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
               >
                 <li>
                   <Link
-                    href="/campaign/notice"
+                    to="/campaign/notice"
                     className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                       openSubMenu === 3
                         ? "text-primary gap-5 active"
@@ -266,7 +265,7 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
                 </li>
                 <li>
                   <Link
-                    href="/campaign/credit-card"
+                    to="/campaign/credit-card"
                     className={`flex items-center gap-3 px-5 py-3 transition-all sub-menu ${
                       openSubMenu === 4
                         ? "text-primary gap-5 active"

@@ -1,11 +1,10 @@
-"use client";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetCreditCardQuery,
   useUpdateCreditCardMutation,
-} from "@/features/creditCard/creditCardApi";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+} from "../../../../app/features/creditCard/creditCardApi";
 import Tab1 from "./tabs/Tab1";
 import Tab2 from "./tabs/Tab2";
 import Tab3 from "./tabs/Tab3";
@@ -21,7 +20,7 @@ const EditCreditCard = () => {
   const Tab = tabs[activeTab];
   const [creditCardData, setCreditCardData] = useState({});
 
-  const router = useRouter();
+  const router = useNavigate();
   const { id } = useParams();
 
   // get credit card
@@ -40,7 +39,7 @@ const EditCreditCard = () => {
   useEffect(() => {
     if (!isLoading && updatedCreditCard?._id) {
       toast.success("Credit Card Updated Successfully.");
-      router.push("/forms/credit-card");
+      router("/forms/credit-card");
     }
   }, [updatedCreditCard, isLoading, router]);
 
