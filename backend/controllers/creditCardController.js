@@ -154,9 +154,7 @@ const uploadCreditCardInformationController = async (req, res) => {
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json({
-      error: "Server error occurred!!",
-    });
+    res.status(500).json(err);
   }
 };
 
