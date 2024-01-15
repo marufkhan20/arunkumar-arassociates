@@ -14,7 +14,9 @@ module.exports = ({ data }) => `<!DOCTYPE html>
     </style>
   </head>
   <body>
-    <span style="font-weight: 700">Hey ${data?.custName}</span>
+    <span style="font-weight: 700">Hey ${
+      data?.custName || data?.customerName
+    }</span>
     <p class="bold mt-10">
       Ref: Invitation to conciliation as per provisions of Section 62 of the
       Arbitration and Conciliation Act, 1996 / Your Credit Card No.
@@ -38,7 +40,9 @@ module.exports = ({ data }) => `<!DOCTYPE html>
       personal visits made by my client.
     </p>
     <p>
-      3. That as of the date, an amount of Rs. ${data?.noticeBalance} is due and payable by
+      3. That as of the date, an amount of Rs. ${
+        data?.noticeBalance
+      } is due and payable by
       you in the aforesaid credit card account to my client. However, my client,
       in the interest of good customer relationship, intends to explore the
       possibility of a settlement through the process of conciliation and
@@ -89,7 +93,9 @@ module.exports = ({ data }) => `<!DOCTYPE html>
     <p class="mt-10">Yours faithfully</p>
     <p>DEVENDRA SINGH</p>
     <p class="bold">
-      Click this link to get your credit card <a href="${process.env.SERVER_URL}${data?.pdfLink}">Click here...</a>
+      Click this link to get your credit card <a href="${
+        process.env.SERVER_URL
+      }${data?.pdfLink}">Click here...</a>
     </p>
   </body>
 </html>

@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -159,7 +163,9 @@ module.exports = (data) =>
       <br />
       <span
         >Whereas you consistently defaulted in payment of the dues in your credit
-        card account <span class="bold">${data?.maskNo} / AAN:${data?.aanNo}</span> and upon
+        card account <span class="bold">${data?.maskNo} / AAN:${
+    data?.aanNo
+  }</span> and upon
         your request and in consideration of the exceptional circumstances, my
         client offered you a settlement towards amicable closure of your card
         account.</span
@@ -197,7 +203,9 @@ module.exports = (data) =>
       <br />
       <span
         >You are hereby called upon to pay the current outstanding of
-        <span class="bold">Rs.${data?.noticeBalance}/-</span> towards your credit card
+        <span class="bold">Rs.${
+          data?.noticeBalance
+        }/-</span> towards your credit card
         account along with Rs.500/- towards notice charges, within 15 days of
         receipt of this legal notice failing which my client will be constrained
         to initiate appropriate legal action against you, both civil and criminal,

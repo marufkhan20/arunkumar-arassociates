@@ -142,8 +142,10 @@ module.exports = (data) =>
       <div class="w-50">
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -151,7 +153,9 @@ module.exports = (data) =>
         ><span class="bold">Sub :- </span> Notice for cheating, criminal breach of
         trust and criminal misappropriation for not making the due payments in
         respect to Your HDFC Bank Credit Card
-        <span class="bold">No: ${data?.maskCard} (AAN# ${data?.aan})</span> as well as
+        <span class="bold">No: ${data?.maskCard} (AAN# ${
+    data?.aan
+  })</span> as well as
         pre-intimation regarding to take necessary action for Cancelation of Visa
         by informing your defaulted profile to Ministry of External Affairs and
         taking further necessary steps for impounding of the passport through
@@ -264,7 +268,9 @@ module.exports = (data) =>
       <div class="mt-5">
         <span
           >Therefore, we on behalf of my client hereby call upon you forthwith to
-          pay the credit card outstanding dues of Rs.${data?.noticeBalance}/- to my
+          pay the credit card outstanding dues of Rs.${
+            data?.noticeBalance
+          }/- to my
           client within 7 days from the date of receipt of this notice failing
           which my client would be constrained to take following actions</span
         >
@@ -312,7 +318,9 @@ module.exports = (data) =>
       <br />
       <br />
       <span class="mt-5"
-        >Please call Mr./ Ms. <span class="bold">${data?.clmName}-${data?.clmMob}</span> for
+        >Please call Mr./ Ms. <span class="bold">${data?.clmName}-${
+    data?.clmMob
+  }</span> for
         further clarification.
         <span class="bold">(DID No. Kindly add Zero before Dialing).</span>
       </span>

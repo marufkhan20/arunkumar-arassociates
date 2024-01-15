@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,15 +145,19 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
       <span class="mt-5 block"
         ><span class="bold">Subject</span> :- Notice / Intimation before
         initiating Criminal complaint against you for nonpayment of credit card
-        amount outstanding <span class="bold">Rs. ${data?.noticeBalance}/-</span> on
+        amount outstanding <span class="bold">Rs. ${
+          data?.noticeBalance
+        }/-</span> on
         <span class="bold">Credit Card No. ${data?.maskNo}</span> AAN no.
         <spna class="bold">${data?.aanNo}</spna>
       </span>
@@ -193,7 +199,9 @@ module.exports = (data) =>
               client and thus you have committed offences under section 405, 406
               ,417 and 420 of Indian penal code, 1860, punishable up to 3-7 years
               of imprisonment or fine or both . That, your Credit Card is having
-              Total outstanding of <span class="bold">Rs.${data?.noticeBalance}/-</span>
+              Total outstanding of <span class="bold">Rs.${
+                data?.noticeBalance
+              }/-</span>
             </span>
           </div>
         </div>
@@ -220,7 +228,9 @@ module.exports = (data) =>
           <span>
             PLEASE THEREFORE TAKE NOTICE that, you are hereby called to pay the
             outstanding amount of
-            <span class="bold">Rs. ${data?.noticeBalance}/-</span> within 7 days from
+            <span class="bold">Rs. ${
+              data?.noticeBalance
+            }/-</span> within 7 days from
             receipt of this notice failing which our client will initiate civil as
             well as criminal proceeding entirely at your own risk as to costs and
             consequences,
@@ -240,7 +250,9 @@ module.exports = (data) =>
   
       <span class="mt-5"
         >For any further information you may call our client authorised person Mr
-        <span class="bold">${data?.clmName}-${data?.clmNo}</span>. If you have changed your
+        <span class="bold">${data?.clmName}-${
+    data?.clmNo
+  }</span>. If you have changed your
         resident address/office address than you may furnish this information to
         our client immediately
       </span>

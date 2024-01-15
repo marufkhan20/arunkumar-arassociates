@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -177,7 +181,9 @@ module.exports = (data) =>
               client resulting in levy of penal interest, late payment and other
               charges in terms of the Loan Agreement. Please note that an amount
               of <span class="bold">Rs. ${data?.totalDue}/-</span> is overdue
-              as on date <span class="bold">${data?.noticeDate}</span> and payable by
+              as on date <span class="bold">${
+                data?.noticeDate
+              }</span> and payable by
               you in captioned loan account.
             </span>
           </div>
@@ -194,7 +200,9 @@ module.exports = (data) =>
             of the Bank. Through this notice you are directed to bring the
             hypothecated vehicle bearing Registration No.
             <span class="bold"
-              >${data?.regNo}, Engine No. ${data?.engineNo}, Chasis No. ${data?.chasisNo}, Model
+              >${data?.regNo}, Engine No. ${data?.engineNo}, Chasis No. ${
+    data?.chasisNo
+  }, Model
               No. ${data?.model} for inspection at «VEHICLE_INSPECTION_PLACE» on
               «VEHICLE_INSPECTION_DATE»</span
             >

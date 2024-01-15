@@ -140,14 +140,16 @@ module.exports = (data) => `<!DOCTYPE html>
     <div class="w-50">
       <span>To,</span>
       <div style="border: 1px solid black; padding: 5px">
-        <h3>${data?.custName}</h3>
+        <h3>${data?.custName || data?.customerName}</h3>
         <span>${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
       </div>
     </div>
 
     <span class="mt-5 bold block"
       >Subject: Demand Notice for Payment of dues amounting to
-      Rs.${data?.noticeBalance}/- in your Credit Card Account No. ${data?.maskNo} (AAN
+      Rs.${data?.noticeBalance}/- in your Credit Card Account No. ${
+  data?.maskNo
+} (AAN
       No. ${data?.aanNo}).
     </span>
 
@@ -206,7 +208,9 @@ module.exports = (data) => `<!DOCTYPE html>
             <span style="padding: 2px 5px; border-right: 1px solid black"
               >${data?.aanNo}</span
             >
-            <span style="padding: 2px 5px; border">${data?.noticeBalance}/-</span>
+            <span style="padding: 2px 5px; border">${
+              data?.noticeBalance
+            }/-</span>
           </div>
         </div>
       </div>
@@ -231,7 +235,9 @@ module.exports = (data) => `<!DOCTYPE html>
         <span>4) </span>
         <span
           >That my client further state that as per the record maintained by the
-          bank a sum of <span class="bold">Rs. ${data?.noticeBalance}/-</span> is due
+          bank a sum of <span class="bold">Rs. ${
+            data?.noticeBalance
+          }/-</span> is due
           and payable by you to my Client under your above referred credit card
           and therefore my client has instructed me to issue this Notice of
           Demand upon you to pay and clear up the aforesaid total outstanding
@@ -243,7 +249,9 @@ module.exports = (data) => `<!DOCTYPE html>
         <span
           >I, therefore, as instructed by my client call upon you by this Notice
           of Demand to pay the total outstanding amount of
-          <span class="bold">Rs. ${data?.noticeBalance}/-</span> within 7 (seven) days
+          <span class="bold">Rs. ${
+            data?.noticeBalance
+          }/-</span> within 7 (seven) days
           from the receipt of this notice failing which my client shall be
           constrained to refer the dispute to the Sole Arbitrator to be
           appointed by
@@ -265,7 +273,9 @@ module.exports = (data) => `<!DOCTYPE html>
           before initiating unpleasant actions against you.
           <span class="bold"
             >You may contact my client at the aforesaid address and call for any
-            further clarification to Mr./ Ms. ${data?.clmName}- ${data?.clmNo}</span
+            further clarification to Mr./ Ms. ${data?.clmName}- ${
+  data?.clmNo
+}</span
           >
         </span>
       </div>

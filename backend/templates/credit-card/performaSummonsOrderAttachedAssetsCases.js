@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -164,7 +168,9 @@ module.exports = (data) =>
       <div class="mt-5 flex flex-col gap-10">
         <div class="flex gap-5">
           <span
-            >That you had availed <span class="bold">${data?.product}</span> (Product)
+            >That you had availed <span class="bold">${
+              data?.product
+            }</span> (Product)
             facility from my client vide Loan Agreement No.
             <span class="bold">${data?.loanNo}</span>.
           </span>
@@ -214,7 +220,9 @@ module.exports = (data) =>
             You may approach Bank officers to know further details and discussion
             in this regard and can reach out to Mr .
             <span class="bold">${data?.clmName}</span> on Contact No. (LL).
-            <span class="bold">${data?.clmMob}</span> between 10.00 AM to 5.00PM on
+            <span class="bold">${
+              data?.clmMob
+            }</span> between 10.00 AM to 5.00PM on
             all working days.
           </span>
         </div>

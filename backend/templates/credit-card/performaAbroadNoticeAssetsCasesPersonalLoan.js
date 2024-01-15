@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,15 +145,19 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
       <span class="mt-5 block"
         ><span class="bold">Subject</span> :- Notice for cheating, criminal breach
         of trust and criminal misappropriation for not making the outstanding
-        amount in respect <span class="bold">${data?.product}</span> bearing Loan Account
+        amount in respect <span class="bold">${
+          data?.product
+        }</span> bearing Loan Account
         No. <span class="bold">${data?.loanNo}</span> as well as pre-intimation
         regarding to take necessary action for Cancelation of Visa by informing
         your defaulted profile to Ministry of External Affairs and taking further
@@ -171,7 +177,9 @@ module.exports = (data) =>
           <span>1. </span>
           <span
             >That you approached my client for availing an
-            <span class="bold">${data?.product}</span> facility and after understanding
+            <span class="bold">${
+              data?.product
+            }</span> facility and after understanding
             and accepting the terms and conditions of loan agreement by you, an
             Agreement was entered into between you and my client.
           </span>
@@ -180,7 +188,9 @@ module.exports = (data) =>
           <span>2. </span>
           <div class="w-full">
             <span
-              >That vide loan account no. <span class="bold">${data?.loanNo}</span>, the
+              >That vide loan account no. <span class="bold">${
+                data?.loanNo
+              }</span>, the
               loan was duly disbursed to you, which you agreed to pay back along
               with agreed interest in monthly installments.
             </span>
@@ -203,7 +213,9 @@ module.exports = (data) =>
           <span>4. </span>
           <span
             >My client states that as on today the total amount payable in
-            <span class="bold">${data?.product}</span> account above mentioned is
+            <span class="bold">${
+              data?.product
+            }</span> account above mentioned is
             <span class="bold">Rs.${data?.noticeBalance}/-</span>.
           </span>
         </div>
@@ -233,15 +245,21 @@ module.exports = (data) =>
             That now it is apparent that you have an intention from the very
             beginning to cheat my client, because in pursuance to said guilty
             intention, you have applied for
-            <span class="bold">${data?.product}</span> and also assured that you will
+            <span class="bold">${
+              data?.product
+            }</span> and also assured that you will
             make the timely payments, whereas on the basis of your assurances and
             promises, my client got convinced and induced to disburse
-            <span class="bold">${data?.product}</span> and now you have committed default
+            <span class="bold">${
+              data?.product
+            }</span> and now you have committed default
             in making the due payments of the loan, thus my client suffered the
             losses due to your dishonest intentions and by the act to breach the
             trust, however if my client was aware about your dishonest intentions
             earlier, definitely they would not have disbursed
-            <span class="bold">${data?.product}</span> to you. Therefore, you have
+            <span class="bold">${
+              data?.product
+            }</span> to you. Therefore, you have
             committed the offence of cheating, criminal breach of trust and
             criminal misappropriation by not making the payment of Loan
             Installments, therefore caused wrongful loss to my client and wrongful
@@ -296,8 +314,12 @@ module.exports = (data) =>
       </span>
   
       <br /><br /><span
-        >Please call Ms/ Mr.. <span class="bold">${data?.clmName}</span> at Mobile no.
-        <span class="bold">${data?.clmMob}</span> for further clarification.</span
+        >Please call Ms/ Mr.. <span class="bold">${
+          data?.clmName
+        }</span> at Mobile no.
+        <span class="bold">${
+          data?.clmMob
+        }</span> for further clarification.</span
       >
   
       <div class="flex flex-col mt-5">

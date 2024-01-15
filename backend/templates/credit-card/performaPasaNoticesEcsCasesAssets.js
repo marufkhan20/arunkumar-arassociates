@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -171,13 +175,17 @@ module.exports = (data) =>
           <span>1. </span>
           <span
             >That you the Noticee has availed a
-            <span class="bold">${data?.product}</span> from my client i.e. HDFC Bank Ltd.
+            <span class="bold">${
+              data?.product
+            }</span> from my client i.e. HDFC Bank Ltd.
             vide Loan Agreement No. ${data?.loanNo} amounting to
             <span class="bold">Rs. «LOAN_AMT»/-</span>. As per the terms and
             conditions of the aforesaid loan agreement and as per repayment
             schedule you the Noticee are under obligation to repay the amount of
             the loan along with interest in
-            <span class="bold">${data?.tenture}</span> monthly installments of Rs
+            <span class="bold">${
+              data?.tenture
+            }</span> monthly installments of Rs
             <span class="bold">«EMI_AMT»/-.</span>
           </span>
         </div>
@@ -192,7 +200,9 @@ module.exports = (data) =>
               client to debit a sum of
               <span class="bold">Rs. «ECSAmount»/-</span> from your Bank Account
               No. <span class="bold">«CUSTOMER_ACCOUNT_NUMBER»</span> maintained
-              by you with, <span class="bold">«BANK__NAME», ${data?.branchAdd}</span> in
+              by you with, <span class="bold">«BANK__NAME», ${
+                data?.branchAdd
+              }</span> in
               every month.
             </span>
           </div>

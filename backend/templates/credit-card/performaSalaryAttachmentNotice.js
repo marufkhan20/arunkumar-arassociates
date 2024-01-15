@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -173,7 +177,9 @@ module.exports = (data) =>
           <span
             >That you availed Credit Card facility vide Card no.
             <span class="bold"
-              >${data?.maskNo}, AAN number: ${data?.aanNo}. The credit card was sanctioned to
+              >${data?.maskNo}, AAN number: ${
+    data?.aanNo
+  }. The credit card was sanctioned to
               you on the basis of submission of the requisite documents including
               the salary being drawn by you under the employment with Government
               bodies/ Private organization</span
@@ -242,7 +248,9 @@ module.exports = (data) =>
           <span>6. </span>
           <span>
             You are hereby called upon to make the payment of
-            <span class="bold">Rs. ${data?.noticeBalance}/-</span> to my client within
+            <span class="bold">Rs. ${
+              data?.noticeBalance
+            }/-</span> to my client within
             seven (7) days from the receipt of this notice, failing which my
             client shall be constrained to take further steps as stated above
             entirely at your risk, cost and consequences thereof, which you may

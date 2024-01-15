@@ -144,7 +144,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -152,8 +154,10 @@ module.exports = (data) =>
         <span>«NOTICE_DATE»</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -325,7 +329,9 @@ module.exports = (data) =>
           <span>9. </span>
           <span>
             That as on <span class="bold">${data?.noticeDate}</span> huge
-            amount of <span class="bold">Rs. ${data?.noticeBalance}/-</span> is due and
+            amount of <span class="bold">Rs. ${
+              data?.noticeBalance
+            }/-</span> is due and
             outstanding against you in relation to above mentioned credit card
             facility availed by you.
           </span>

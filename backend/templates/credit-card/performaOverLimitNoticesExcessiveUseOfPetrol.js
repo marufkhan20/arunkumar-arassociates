@@ -138,7 +138,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -146,15 +148,19 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
       <span style="margin-top: 15px; display: block"> Dear Sir/Madam, </span>
       <span class="mt-5 block"
         ><span class="bold">Subject: </span> Notice for exceeding credit limit in
-        your HDFC Bank Credit Card No. <span class="bold">${data?.maskNo}</span> AAN
+        your HDFC Bank Credit Card No. <span class="bold">${
+          data?.maskNo
+        }</span> AAN
         <span class="bold">${data?.aanNo}</span> of HDFC Bank Ltd.
       </span>
   
@@ -248,9 +254,13 @@ module.exports = (data) =>
       <span
         >Hence we hereby request you to make payment of exceeded credit limit
         amounting to
-        <span class="bold">Rs. ${data?.amountExceededCreditLimit}/-</span> against the
+        <span class="bold">Rs. ${
+          data?.amountExceededCreditLimit
+        }/-</span> against the
         credit card outstanding of
-        <span class="bold">Rs. ${data?.noticeBalance}/-</span> (within seven (7) days
+        <span class="bold">Rs. ${
+          data?.noticeBalance
+        }/-</span> (within seven (7) days
         from the date of this notice, failing which my client reserves its legal
         right to recover the outstanding dues along with applicable charges.</span
       >
@@ -268,7 +278,9 @@ module.exports = (data) =>
       <br />
       <br />
       <span class="bold"
-        >"For any further clarification you may please contact Mr./Ms. ${data?.clmName}-
+        >"For any further clarification you may please contact Mr./Ms. ${
+          data?.clmName
+        }-
         ${data?.clmNo} (Collection team name)</span
       >
       <br />

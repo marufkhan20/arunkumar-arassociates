@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -187,11 +191,15 @@ module.exports = (data) =>
             My client states and submits that, you being the customer(s) availed
             Credit Card <span class="bold">${data?.maskNo}</span> (bearing AAN:
             <span class="bold">${data?.aanNo}</span> for a sum of
-            <span class="bold">Rs ${data?.noticeBalance}/-</span> by entering into a
+            <span class="bold">Rs ${
+              data?.noticeBalance
+            }/-</span> by entering into a
             Credit Card facility and agreed to make repayment of the said utilized
             amount due. Please note as a result of continuous default n repayment,
             your above referred Credit facility having total outstanding amount of
-            <span class="bold">Rs. ${data?.noticeBalance}/-</span> is due and payable to
+            <span class="bold">Rs. ${
+              data?.noticeBalance
+            }/-</span> is due and payable to
             my client.
           </span>
         </div>
@@ -203,7 +211,9 @@ module.exports = (data) =>
               the credit card outstanding appearing against your credit card
               account(s), you may submit a settlement proposal to my client and/or
               may contact it’s Officer Mr/Ms.
-              <span class="bold">${data?.clmName}-${data?.clmNo}</span> on his mobile number
+              <span class="bold">${data?.clmName}-${
+    data?.clmNo
+  }</span> on his mobile number
               for due consideration of proposal by my client. My Client hopes that
               you will take this offer as an opportunity to settle the credit card
               account and to avoid the future litigations.

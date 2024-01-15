@@ -140,7 +140,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -148,8 +150,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -157,7 +161,9 @@ module.exports = (data) =>
   
       <span class="mt-5 block"
         ><span class="bold">विषयः </span> आपके द्वारा एच0डी0एफ0सी0 बैंक से लिए गए
-        ऋण खाता संख्या <span class="bold">${data?.loanNo}</span> की बकाया देनदारी के
+        ऋण खाता संख्या <span class="bold">${
+          data?.loanNo
+        }</span> की बकाया देनदारी के
         समझौता बारे।
       </span>
   
@@ -165,7 +171,9 @@ module.exports = (data) =>
       <span
         >आप ने हमारे बैंक से लोन लिया था तथा इस बारे आप ने बैंक के साथ एक संविदा,
         <span class="bold">(Contract)</span> बजरिए ऋण खाता संख्या
-        <span class="bold">${data?.loanNo}</span> निश्पादित (Execute) किया था। उपरोक्त
+        <span class="bold">${
+          data?.loanNo
+        }</span> निश्पादित (Execute) किया था। उपरोक्त
         ऋण खाता संविदा <span class="bold">(Contract)</span> की शर्तों के मुताबिक,
         आपको मासिक किश्तें देनी थी।
       </span>

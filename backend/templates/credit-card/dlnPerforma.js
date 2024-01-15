@@ -155,14 +155,16 @@ module.exports = (data) => `<!DOCTYPE html>
       <div class="w-50">
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
+          <h3>${data?.custName || data?.customerName}</h3>
           <span>${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
         </div>
       </div>
   
       <span class="mt-5 bold block"
         >Subject: Demand Notice for Payment of dues amounting to
-        Rs.${data?.noticeBalance}/- in your Credit Card Account No. ${data?.maskNo} (AAN
+        Rs.${data?.noticeBalance}/- in your Credit Card Account No. ${
+  data?.maskNo
+} (AAN
         No. ${data?.aanNo}).
       </span>
   
@@ -185,7 +187,9 @@ module.exports = (data) => `<!DOCTYPE html>
             furnished in the credit card application and the documents furnished
             in support thereof, you were issued a
             <span class="bold"
-              >Credit Card vide credit card no. ${data?.maskNo}(AAN# ${data?.aanNo}).</span
+              >Credit Card vide credit card no. ${data?.maskNo}(AAN# ${
+  data?.aanNo
+}).</span
             >
           </span>
         </div>
@@ -246,7 +250,9 @@ module.exports = (data) => `<!DOCTYPE html>
       <span class="mt-5"
         >Therefore, I on behalf of my client hereby call upon you forthwith to pay
         the credit card outstanding dues of
-        <span class="bold">Rs.${data?.noticeBalance}/- as on ${data?.noticeDate}</span> to my
+        <span class="bold">Rs.${data?.noticeBalance}/- as on ${
+  data?.noticeDate
+}</span> to my
         client immediately from the date of receipt of this notice failing which
         my client would be constrained to initiate appropriate legal proceedings
         against you for recovery of the above outstanding dues, holding you solely

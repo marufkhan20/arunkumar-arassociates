@@ -138,15 +138,19 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
       <div class="w-50">
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -173,7 +177,9 @@ module.exports = (data) =>
           <span>1. </span>
           <span
             >That you had availed credit card facility from my client vide Credit
-            Card <No class="span bold">${data?.aanNo} (AAN# ${data?.aanNo}).</No>
+            Card <No class="span bold">${data?.aanNo} (AAN# ${
+    data?.aanNo
+  }).</No>
           </span>
         </div>
         <div class="flex gap-5">
@@ -191,7 +197,9 @@ module.exports = (data) =>
           <span>3. </span>
           <span
             >That as on date an amount of
-            <span class="bold">Rs. ${data?.noticeBalance}/-</span> is due and payable by
+            <span class="bold">Rs. ${
+              data?.noticeBalance
+            }/-</span> is due and payable by
             you in the aforesaid credit card account to my client. However my
             client in the interest of good customer relationship intends to
             explore the possibility of a settlement, through process of

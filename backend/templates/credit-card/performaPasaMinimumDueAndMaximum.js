@@ -135,7 +135,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -143,8 +145,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -153,7 +157,9 @@ module.exports = (data) =>
         <span class="bold"
           >Notice of demand under Section 25 of the Payment and Settlement Systems
           Act, 2007 (“Act”) for dishonor of electronic fund transfer in respect to
-          Your HDFC Bank Credit Card Number ${data?.maskCard} (AAN# ${data?.aan})</span
+          Your HDFC Bank Credit Card Number ${data?.maskCard} (AAN# ${
+    data?.aan
+  })</span
         >
       </span>
   
@@ -175,7 +181,9 @@ module.exports = (data) =>
           <span>1. </span>
           <span></span>
             That you the Noticee had availed a Credit Card facility from my Client
-            vide Card No. <span class="bold">${data?.maskCard} (AAN# ${data?.aan}).</span>
+            vide Card No. <span class="bold">${data?.maskCard} (AAN# ${
+    data?.aan
+  }).</span>
           </span>
         </div>
         <div class="flex gap-5">
@@ -235,7 +243,9 @@ module.exports = (data) =>
         I trust you would see the seriousness of my Client’s intentions and suitably act in compliance of this Notice and
   your failure to do so would render you the Noticee liable for the costs and consequences thereof of which you
   would be solely liable. For any further clarification in respect of the present Notice, you may please contact my
-  Client’s Officer <span class="bold">Mr. ${data?.clmName}-${data?.clmMob}(Mon-sat 10:00 AM to 5:00 PM) on working days
+  Client’s Officer <span class="bold">Mr. ${data?.clmName}-${
+    data?.clmMob
+  }(Mon-sat 10:00 AM to 5:00 PM) on working days
     Note: In compliance to data security standards the credit card no. is being masked and full
     alternate account number has been used in this notice.</span>
       </span>

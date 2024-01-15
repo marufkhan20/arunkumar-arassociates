@@ -136,7 +136,9 @@ module.exports = (data) =>
   
       <div class="mt-5 flex items-center justify-between text-sm">
         <span>Ref: ${data?.referenceNo}</span>
-        <span class="bold" style="font-size: 16px">THROUGH ${data?.modeOfDispatch}</span>
+        <span class="bold" style="font-size: 16px">THROUGH ${
+          data?.modeOfDispatch
+        }</span>
         <span>Dated: ${data?.noticeDate}</span>
       </div>
   
@@ -144,8 +146,10 @@ module.exports = (data) =>
         <span>${data?.noticeDate}</span><br />
         <span>To,</span>
         <div style="border: 1px solid black; padding: 5px">
-          <h3>${data?.custName}</h3>
-          <span class="bold">${data?.customerAddress} Mob No. ${data?.custMobileNo}</span>
+          <h3>${data?.custName || data?.customerName}</h3>
+          <span class="bold">${data?.customerAddress} Mob No. ${
+    data?.custMobileNo
+  }</span>
         </div>
       </div>
   
@@ -153,7 +157,9 @@ module.exports = (data) =>
         ><span class="bold">Subject</span> :-
         <span class="bold"
           >Suit to be filed against you for failure to pay the outstanding dues
-          towards your HDFC Bank Credit Card No: ${data?.maskNo} (AAN# ${data?.aanNo})
+          towards your HDFC Bank Credit Card No: ${data?.maskNo} (AAN# ${
+    data?.aanNo
+  })
         </span>
       </span>
   
@@ -168,7 +174,9 @@ module.exports = (data) =>
       <br />
       <span
         >My client states that you have availed credit card facility vide credit
-        card no. <span class="bold"> ${data?.maskNo} (AAN# ${data?.aanNo})</span> and utilized
+        card no. <span class="bold"> ${data?.maskNo} (AAN# ${
+    data?.aanNo
+  })</span> and utilized
         the said Credit Card facility provided by my client as per your
         convenience at various occasions and you have thereafter defaulted and
         neglected to make payment of the outstanding dues as per the monthly
@@ -195,7 +203,9 @@ module.exports = (data) =>
       >
       <br />
       <span class="bold ml-10"
-        >a) A decree for an amount of Rs. ${data?.noticeDate}/- along with interest @
+        >a) A decree for an amount of Rs. ${
+          data?.noticeDate
+        }/- along with interest @
         18% p. a. from the date of filing of Suit till the date of payment and /
         or realization of the said amount.</span
       >
@@ -217,7 +227,9 @@ module.exports = (data) =>
       <span
         >Without Prejudice, if you are still ready and willing to pay the
         outstanding Amount of
-        <span class="bold">Rs. ${data?.noticeBalance}/-</span> please immediately
+        <span class="bold">Rs. ${
+          data?.noticeBalance
+        }/-</span> please immediately
         contact my client’s legal department at
         <span class="bold"
           >HDFC Bank Ltd., 401-402, Main Delhi Road, Model Town Rohtak.</span
