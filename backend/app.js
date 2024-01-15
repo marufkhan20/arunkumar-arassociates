@@ -31,7 +31,7 @@ app.use(express.json({ limit: "200mb" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // set public folder
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static("public"));
 
 // all routes
 app.use("/api/auth", authRoutes);
@@ -39,20 +39,26 @@ app.use("/api/credit-cards", creditCardRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/campaigns", campaignRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "/public/storage/uploads"))
-);
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
-);
+app.use("/", (req, res) => {
+  res.send("Welcome");
+});
+// app.use(
+//   "/uploads",
+//   express.static(path.join(__dirname, "/public/storage/uploads"))
+// );
+// app.get("*", (req, res) =>
+//   res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
+// );
 
 // database connection
 mongoose
-  .connect(process.env.DB_CONNECTION, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://326040Maruf:326040Maruf@cluster0.0wztu.mongodb.net/thebullsmedia",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("database connection successful!"))
   .catch((err) => console.log("error", err));
 
