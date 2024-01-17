@@ -52,129 +52,133 @@ const {
 const cloudinary = require("./cloudinary");
 
 const generatePdfTemplate = async (activityName, data) => {
-  let template;
-  const activity = activityName?.toLowerCase();
+  try {
+    let template;
+    const activity = activityName?.toLowerCase();
 
-  switch (activity) {
-    case ARBITRATION_PERFORMA:
-      template = arbitrationPerforma;
-      break;
+    switch (activity) {
+      case ARBITRATION_PERFORMA:
+        template = arbitrationPerforma;
+        break;
 
-    case DLN_PERFORMA:
-      template = dlnPerforma;
-      break;
+      case DLN_PERFORMA:
+        template = dlnPerforma;
+        break;
 
-    case AMENDED_HINDI_PERFORMA_CONCILIATION_ASSETS:
-      template = amendedHindiPerformaConciliationAssets;
-      break;
+      case AMENDED_HINDI_PERFORMA_CONCILIATION_ASSETS:
+        template = amendedHindiPerformaConciliationAssets;
+        break;
 
-    case PERFORMA_406_420:
-      template = performa406420;
-      break;
+      case PERFORMA_406_420:
+        template = performa406420;
+        break;
 
-    case PERFORMA_ABROAD_NOTICE:
-      template = performaAbroadNotice;
-      break;
+      case PERFORMA_ABROAD_NOTICE:
+        template = performaAbroadNotice;
+        break;
 
-    case PERFORMA_ABROAD_NOTICE_ASSETS_CASES_PERSONAL_LOAN:
-      template = performaAbroadNoticeAssetsCasesPersonalLoan;
-      break;
-    case PERFORMA_ASSESTS_VERIFICATION_NOTICE_AVN:
-      template = performaAssestsVerificationNoticeAvn;
-      break;
-    case PERFORMA_BROKEN_SETTLEMENT_LETTER:
-      template = performaBrokenSettlementLetter;
-      break;
+      case PERFORMA_ABROAD_NOTICE_ASSETS_CASES_PERSONAL_LOAN:
+        template = performaAbroadNoticeAssetsCasesPersonalLoan;
+        break;
+      case PERFORMA_ASSESTS_VERIFICATION_NOTICE_AVN:
+        template = performaAssestsVerificationNoticeAvn;
+        break;
+      case PERFORMA_BROKEN_SETTLEMENT_LETTER:
+        template = performaBrokenSettlementLetter;
+        break;
 
-    case PERFORMA_CIVIL_SUIT_NOTICE:
-      template = performaCivilSuitNotice;
-      break;
+      case PERFORMA_CIVIL_SUIT_NOTICE:
+        template = performaCivilSuitNotice;
+        break;
 
-    case PERFORMA_CONCILIATION:
-      template = performaConciliation;
-      break;
+      case PERFORMA_CONCILIATION:
+        template = performaConciliation;
+        break;
 
-    case PERFORMA_DEMAND_NOTICE_ASSETS_CASES_NEW:
-      template = performaDemandNoticeAssetsCasesNew;
-      break;
+      case PERFORMA_DEMAND_NOTICE_ASSETS_CASES_NEW:
+        template = performaDemandNoticeAssetsCasesNew;
+        break;
 
-    case PERFORMA_HIGHT_PETROL_TRANSACTION:
-      template = performaHighPetrolTransaction;
-      break;
+      case PERFORMA_HIGHT_PETROL_TRANSACTION:
+        template = performaHighPetrolTransaction;
+        break;
 
-    case PERFORMA_OTS:
-      template = performaOts;
-      break;
+      case PERFORMA_OTS:
+        template = performaOts;
+        break;
 
-    case PERFORMA_OVER_LIMIT_NOTICES_EXCESSIVE_USE_OF_PETROL:
-      template = performaOverLimitNoticesExcessiveUseOfPetrol;
-      break;
+      case PERFORMA_OVER_LIMIT_NOTICES_EXCESSIVE_USE_OF_PETROL:
+        template = performaOverLimitNoticesExcessiveUseOfPetrol;
+        break;
 
-    case PERFORMA_PASA_MINIMUM_DUE_AND_MAXIMUM:
-      template = performaPasaMinimumDueAndMaximum;
-      break;
+      case PERFORMA_PASA_MINIMUM_DUE_AND_MAXIMUM:
+        template = performaPasaMinimumDueAndMaximum;
+        break;
 
-    case PERFORMA_PASA_NOTICES_ECS_CASES_ASSETS:
-      template = performaPasaNoticesEcsCasesAssets;
-      break;
+      case PERFORMA_PASA_NOTICES_ECS_CASES_ASSETS:
+        template = performaPasaNoticesEcsCasesAssets;
+        break;
 
-    case PERFORMA_PDN:
-      template = performaPdn;
-      break;
+      case PERFORMA_PDN:
+        template = performaPdn;
+        break;
 
-    case PERFORMA_SALARY_ATTACHMENT_NOTICE:
-      template = performaSalaryAttachmentNotice;
-      break;
+      case PERFORMA_SALARY_ATTACHMENT_NOTICE:
+        template = performaSalaryAttachmentNotice;
+        break;
 
-    case PERFORMA_SUMMONS_CASES_ORDER_ATTACHED:
-      template = performaSummonsCasesOrderAttached;
-      break;
+      case PERFORMA_SUMMONS_CASES_ORDER_ATTACHED:
+        template = performaSummonsCasesOrderAttached;
+        break;
 
-    case PERFORMA_SUMMONS_ORDER_ATTACHED_ASSETS_CASES:
-      template = performaSummonsOrderAttachedAssetsCases;
-      break;
+      case PERFORMA_SUMMONS_ORDER_ATTACHED_ASSETS_CASES:
+        template = performaSummonsOrderAttachedAssetsCases;
+        break;
 
-    case PERFORMA_WARRANT_CASES_ORDER_ATTACHED:
-      template = performaWarrantCasesOrderAttached;
-      break;
+      case PERFORMA_WARRANT_CASES_ORDER_ATTACHED:
+        template = performaWarrantCasesOrderAttached;
+        break;
 
-    case PERFORMA_WARRANT_CASES_ORDER_ATTACHED_ASSETS_EMAIL_PURPOSE:
-      template = performaWarrantCasesOrderAttachedAssetsEmailPurpose;
-      break;
+      case PERFORMA_WARRANT_CASES_ORDER_ATTACHED_ASSETS_EMAIL_PURPOSE:
+        template = performaWarrantCasesOrderAttachedAssetsEmailPurpose;
+        break;
 
-    default:
-      template = arbitrationPerforma;
-      break;
+      default:
+        template = arbitrationPerforma;
+        break;
+    }
+
+    // generate pdf reports
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+
+    // Replace this with your actual HTML content
+    const htmlContent = template(data);
+
+    // Set the HTML content of the page
+    await page.setContent(htmlContent);
+
+    // Generate PDF and send it as a response
+    const pdfBuffer = await page.pdf({ format: "A4", scale: 1 });
+
+    // Specify the path where you want to save the PDF file
+    const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
+
+    const pdfPath = path.resolve(__dirname, `../public/${fileName}`);
+
+    // Write the PDF buffer to the file
+    fs.writeFileSync(pdfPath, pdfBuffer);
+
+    // delete filestystem file
+    // await fs.unlink(pdfPath);
+
+    // Close the browser
+    await browser.close();
+
+    return fileName;
+  } catch (err) {
+    throw err;
   }
-
-  // generate pdf reports
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-
-  // Replace this with your actual HTML content
-  const htmlContent = template(data);
-
-  // Set the HTML content of the page
-  await page.setContent(htmlContent);
-
-  // Generate PDF and send it as a response
-  const pdfBuffer = await page.pdf({ format: "A4", scale: 1 });
-
-  // Specify the path where you want to save the PDF file
-  const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
-
-  const pdfPath = path.resolve(__dirname, `../public/${fileName}`);
-
-  // Write the PDF buffer to the file
-  fs.writeFileSync(pdfPath, pdfBuffer);
-
-  // delete filestystem file
-  // await fs.unlink(pdfPath);
-
-  // Close the browser
-  await browser.close();
-
-  return fileName;
 };
 
 module.exports = {
