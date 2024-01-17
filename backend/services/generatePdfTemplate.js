@@ -163,7 +163,7 @@ const generatePdfTemplate = async (activityName, data, res) => {
   // Specify the path where you want to save the PDF file
   const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
 
-  const pdfPath = path.resolve(__dirname, `../public/${fileName}`);
+  const pdfPath = path.resolve("/tmp", `../public/${fileName}`);
 
   // Write the PDF buffer to the file
   fs.writeFileSync(pdfPath, pdfBuffer);
@@ -174,7 +174,8 @@ const generatePdfTemplate = async (activityName, data, res) => {
   // Close the browser
   await browser.close();
 
-  res.status(200).json({ fileName });
+  // res.status(200).json({ fileName });
+  return fileName;
 };
 
 module.exports = {
