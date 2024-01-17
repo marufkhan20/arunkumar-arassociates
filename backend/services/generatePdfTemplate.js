@@ -24,7 +24,7 @@ const {
 } = require("../templates/templateNames");
 const path = require("path");
 const puppeteer = require("puppeteer");
-const fs = require("fs");
+const fs = require("fs").promises;
 const {
   amendedHindiPerformaConciliationAssets,
   arbitrationPerforma,
@@ -49,6 +49,7 @@ const {
   performaWarrantCasesOrderAttached,
   performaWarrantCasesOrderAttachedAssetsEmailPurpose,
 } = require("../templates/credit-card");
+const cloudinary = require("./cloudinary");
 
 const generatePdfTemplate = async (activityName, data) => {
   let template;
@@ -147,7 +148,7 @@ const generatePdfTemplate = async (activityName, data) => {
   }
 
   // generate pdf reports
-  const browser = await puppeteer.launch({headless: true});
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Replace this with your actual HTML content
@@ -160,14 +161,15 @@ const generatePdfTemplate = async (activityName, data) => {
   const pdfBuffer = await page.pdf({ format: "A4", scale: 1 });
 
   // Specify the path where you want to save the PDF file
-  fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
-  const pdfPath = path.resolve(
-    __dirname,
-    `../public/storage/pdf-templates/${fileName}`
-  );
+  const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
+
+  const pdfPath = path.resolve(__dirname, `../public/${fileName}`);
 
   // Write the PDF buffer to the file
   fs.writeFileSync(pdfPath, pdfBuffer);
+
+  // delete filestystem file
+  // await fs.unlink(pdfPath);
 
   // Close the browser
   await browser.close();

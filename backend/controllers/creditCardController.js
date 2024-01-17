@@ -47,7 +47,7 @@ const createNewCreditCardController = async (req, res) => {
       user: _id,
       ...req.body,
       pdfFormat: activity,
-      pdfLink: `/storage/pdf-templates/${fileName}`,
+      pdfLink: fileName,
     });
     await newCreditCard.save();
 
@@ -130,7 +130,7 @@ const uploadCreditCardInformationController = async (req, res) => {
         user: _id,
         ...item,
         pdfFormat: item?.activity,
-        pdfLink: `/storage/pdf-templates/${fileName}`,
+        pdfLink: fileName,
       });
       const savedCreditCard = await newCreditCard.save();
 

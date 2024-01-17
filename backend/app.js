@@ -42,10 +42,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/", (req, res) => {
   res.send("Welcome");
 });
-// app.use(
-//   "/uploads",
-//   express.static(path.join(__dirname, "/public/storage/uploads"))
-// );
+app.use("/uploads", express.static(path.join(__dirname, "/public")));
 // app.get("*", (req, res) =>
 //   res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
 // );

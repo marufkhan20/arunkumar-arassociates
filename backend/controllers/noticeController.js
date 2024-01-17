@@ -47,7 +47,7 @@ const createNewNoticeController = async (req, res) => {
       user: _id,
       ...req.body,
       pdfFormat: activity,
-      pdfLink: `/storage/pdf-templates/${fileName}`,
+      pdfLink: fileName,
       campDate: new Date(),
     });
     await newNotice.save();
@@ -127,7 +127,7 @@ const uploadNoticeInformationController = async (req, res) => {
         user: _id,
         ...item,
         pdfFormat: item?.activity,
-        pdfLink: `/storage/pdf-templates/${fileName}`,
+        pdfLink: `/uploads/${fileName}`,
       });
       await newNotice.save();
 
