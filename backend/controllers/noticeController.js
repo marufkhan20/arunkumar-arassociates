@@ -120,7 +120,7 @@ const uploadNoticeInformationController = async (req, res) => {
     const noticessId = [];
 
     for (const item of transformedData) {
-      const fileName = await generatePdfTemplate(item?.activity, item);
+      const fileName = await generatePdfTemplate(item?.activity, item, res);
 
       // create new credit card
       const newNotice = new Notice({
@@ -151,7 +151,9 @@ const uploadNoticeInformationController = async (req, res) => {
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json(err);
+    res.status(500).json({
+      errorform: err,
+    });
   }
 };
 

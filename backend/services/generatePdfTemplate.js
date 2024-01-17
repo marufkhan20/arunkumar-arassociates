@@ -51,7 +51,7 @@ const {
 } = require("../templates/credit-card");
 const cloudinary = require("./cloudinary");
 
-const generatePdfTemplate = async (activityName, data) => {
+const generatePdfTemplate = async (activityName, data, res) => {
   try {
     let template;
     const activity = activityName?.toLowerCase();
@@ -177,7 +177,9 @@ const generatePdfTemplate = async (activityName, data) => {
 
     return fileName;
   } catch (err) {
-    throw err;
+    res.status(500).json({
+      error: err,
+    });
   }
 };
 
