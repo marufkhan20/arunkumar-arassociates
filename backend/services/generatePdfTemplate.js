@@ -175,7 +175,7 @@ const generatePdfTemplate = async (activityName, data, res) => {
     // Close the browser
     await browser.close();
 
-    return fileName;
+    res.status(200).json({ fileName });
   } catch (err) {
     res.status(500).json({
       error: err,
