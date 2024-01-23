@@ -46,7 +46,7 @@ const registerController = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({
-      error: err.message,
+      error: err,
     });
   }
 };
@@ -70,7 +70,7 @@ const loginController = async (req, res) => {
   bcrypt.compare(password, user.password, async function (err, result) {
     if (err) {
       return res.status(500).json({
-        error: "Server Error Occurred!",
+        error: err,
       });
     }
 
@@ -143,7 +143,7 @@ const fortgotPasswordController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -227,7 +227,7 @@ const changePasswordController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };

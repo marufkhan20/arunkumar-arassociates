@@ -14,7 +14,7 @@ const getAllCreditCardsByUserIController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -28,7 +28,7 @@ const getCreditCardController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -66,7 +66,7 @@ const createNewCreditCardController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -167,7 +167,7 @@ const editCreditCardController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -181,7 +181,7 @@ const deleteCreditCardController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };

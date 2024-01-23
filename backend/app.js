@@ -50,11 +50,7 @@ app.use("/uploads", express.static(path.join(__dirname, "/public")));
 // database connection
 mongoose
   .connect(
-    "mongodb+srv://326040Maruf:326040Maruf@cluster0.0wztu.mongodb.net/thebullsmedia",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
+    "mongodb+srv://326040Maruf:326040Maruf@cluster0.0wztu.mongodb.net/thebullsmedia"
   )
   .then(() => console.log("database connection successful!"))
   .catch((err) => console.log("error", err));

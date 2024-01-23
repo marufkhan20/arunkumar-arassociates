@@ -7,17 +7,19 @@ const sendMail = async ({ from, to, subject, html }) => {
       port: 587,
       // secure: false,
       auth: {
-        user: "Zoho-enczapikey PHtE6r0MR7vpjjYqpEAFs/KwEZH3ZIt6/utuflIUt4tFWPIAGU0ArNsim2O3qBcuUqZCHPHIwIJhtries+3WJmruMj1FVWqyqK3sx/VYSPOZsbq6x00cuV0af0feXITvetVq3CDVs9beNA==",
+        user: "emailapikey",
         pass: "PHtE6r0MR7vpjjYqpEAFs/KwEZH3ZIt6/utuflIUt4tFWPIAGU0ArNsim2O3qBcuUqZCHPHIwIJhtries+3WJmruMj1FVWqyqK3sx/VYSPOZsbq6x00cuV0af0feXITvetVq3CDVs9beNA==",
       },
     });
 
     let info = await transporter.sendMail({
-      from: "legal.arunkumarassociates@gmail.com",
+      from: '"Example Team" <noreply@arunkumarassociates.in>',
       to,
       subject,
       html,
     });
+
+    console.log("info", info);
 
     return info;
   } catch (err) {
