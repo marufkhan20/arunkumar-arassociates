@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const mailInfoSchema = new Schema(
   {
-    uesr: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },

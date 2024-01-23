@@ -7,16 +7,18 @@ const Notice = require("../models/Notice");
 const geAllDashboardInformationController = async (req, res) => {
   try {
     const { _id } = req.user || {};
-    const totalCreditCards = await CreditCard.countDocuments();
-    const totalNotices = await Notice.countDocuments();
+    const totalCreditCards = await CreditCard.countDocuments({ user: _id });
+    const totalNotices = await Notice.countDocuments({ user: _id });
     const totalCreditCardCampaigns = await Campaign.countDocuments({
       type: "credit-card",
+      user: _id,
     });
     const totalNoticeCampaigns = await Campaign.countDocuments({
       type: "notice",
+      user: _id,
     });
 
-    const mailInfo = await MailInfo.find().sort({
+    const mailInfo = await MailInfo.find({ user: _id }).sort({
       createdAt: "desc",
     });
 
@@ -30,7 +32,7 @@ const geAllDashboardInformationController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };

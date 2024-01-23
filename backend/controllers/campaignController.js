@@ -22,7 +22,7 @@ const getAllCampaignController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -39,7 +39,7 @@ const getSingleCampaignController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -69,77 +69,85 @@ const sendMailController = async (req, res) => {
           const url = "https://api.interakt.ai/v1/public/message/";
           const headers = {
             "Content-Type": "application/json",
+            Authorization: `Basic WGtKMzdiX19xelJLdDZQQXkzYXFhODFIUG5kWTktdjZXS2g2V1dlUTRFZzo=`, // Add your authorization header if needed
+          };
+          const requestBody = {
+            // countryCode: "+880",
+            countryCode: "+91",
+            // phoneNumber: `1960038965`,
+            phoneNumber: `${creditCard?.custMobileNo}`,
+            callbackData: "some text here",
+            type: "Template",
+
+            template: {
+              name: "common",
+              languageCode: "en",
+              headerValues: ["header_variable_value"],
+              buttonValues: { 1: ["12344"] },
+              bodyValues: [
+                creditCard?.custName || "empty",
+                creditCard?.maskNo || "empty",
+                creditCard?.noticeDate || "empty",
+                creditCard?.noticeBalance || "empty",
+                creditCard?.clmName || "empty",
+                creditCard?.clmNo || "empty",
+                `${process.env.SERVER_URL}${creditCard?.pdfLink}` || "empty",
+              ],
+            },
+          };
+          const ress = await axios.post(url, requestBody, { headers });
+          console.log("resss", ress);
+        }
+      } else if (type === "notice") {
+        const notice = await Notice.findById(item);
+
+        if (
+          notice?._id &&
+          notice?.email &&
+          notice?.mode?.toLowerCase().includes("email")
+        ) {
+          await sendMail({
+            to: notice?.email?.toLowerCase(),
+            subject: "Credit Card Notice",
+            html: campaignMailTemplate({ data: notice }),
+          });
+        }
+
+        if (
+          notice?._id &&
+          notice?.mobile &&
+          notice?.mode?.toLowerCase().includes("whatsapp")
+        ) {
+          // send whatsapp messages
+          const url = "https://api.interakt.ai/v1/public/message/";
+          const headers = {
+            "Content-Type": "application/json",
             Authorization: `Basic ${process.env.INTERAKT_SECRET_KEY}`, // Add your authorization header if needed
           };
           const requestBody = {
             countryCode: "+91",
-            phoneNumber: `${creditCard?.custMobileNo}`,
+            // countryCode: "+880",
+            phoneNumber: `${notice?.mobile}`,
+            // phoneNumber: `1960038965`,
             callbackData: "some text here",
             type: "Template",
             template: {
               name: "common",
               languageCode: "en",
+              headerValues: ["header_variable_value"],
+              buttonValues: { 1: ["12344"] },
               bodyValues: [
-                creditCard?.custName,
-                creditCard?.maskNo,
-                creditCard?.noticeDate,
-                creditCard?.noticeBalance,
-                creditCard?.clmName,
-                creditCard?.clmNo,
-                `${process.env.SERVER_URL}${creditCard?.pdfLink}`,
+                notice?.arqnName || "empty",
+                notice?.maskCard || "empty",
+                notice?.noticeDate || "empty",
+                notice?.noticeBalance || "empty",
+                notice?.clmName || "empty",
+                notice?.clmNo || "empty",
+                `${process.env.SERVER_URL}${notice?.pdfLink}` || "empty",
               ],
             },
           };
           await axios.post(url, requestBody, { headers });
-        }
-      } else if (type === "notice") {
-        if (type === "credit-card") {
-          const notice = await Notice.findById(item);
-
-          if (
-            notice?._id &&
-            notice?.email &&
-            notice?.mode?.toLowerCase().includes("email")
-          ) {
-            await sendMail({
-              to: notice?.email?.toLowerCase(),
-              subject: "Credit Card Notice",
-              html: campaignMailTemplate({ data: notice }),
-            });
-          }
-
-          if (
-            notice?._id &&
-            notice?.mobile &&
-            notice?.mode?.toLowerCase().includes("whatsapp")
-          ) {
-            // send whatsapp messages
-            const url = "https://api.interakt.ai/v1/public/message/";
-            const headers = {
-              "Content-Type": "application/json",
-              Authorization: `Basic ${process.env.INTERAKT_SECRET_KEY}`, // Add your authorization header if needed
-            };
-            const requestBody = {
-              countryCode: "+91",
-              phoneNumber: `${notice?.mobile}`,
-              callbackData: "some text here",
-              type: "Template",
-              template: {
-                name: "common",
-                languageCode: "en",
-                bodyValues: [
-                  notice?.arqnName,
-                  notice?.maskCard,
-                  notice?.noticeDate,
-                  notice?.noticeBalance,
-                  notice?.clmName,
-                  notice?.clmNo,
-                  `${process.env.SERVER_URL}${notice?.pdfLink}`,
-                ],
-              },
-            };
-            await axios.post(url, requestBody, { headers });
-          }
         }
       }
     }
@@ -153,6 +161,7 @@ const sendMailController = async (req, res) => {
     });
 
     await newMailInfo.save();
+    console.log("hello", newMailInfo);
 
     res.status(200).json({ success: true });
   } catch (err) {
@@ -170,7 +179,7 @@ const sendMailController = async (req, res) => {
 
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };

@@ -1,5 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
+import CloudinaryDownload from "./DownloadFile";
 import Home from "./pages/Home";
 import PrivateRoute from "./pages/PrivateRoute";
 import PublicRoute from "./pages/PublicRoute";
@@ -19,6 +20,7 @@ import EditNoticePage from "./pages/forms/Notices/EditNotice";
 function App() {
   return (
     <>
+      <CloudinaryDownload />
       <Toaster />
       <Routes>
         <Route

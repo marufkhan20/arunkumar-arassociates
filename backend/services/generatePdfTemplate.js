@@ -148,7 +148,11 @@ const generatePdfTemplate = async (activityName, data, res) => {
   }
 
   // generate pdf reports
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    executablePath: "/usr/bin/chromium-browser",
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   const page = await browser.newPage();
 
   // Replace this with your actual HTML content
@@ -163,13 +167,10 @@ const generatePdfTemplate = async (activityName, data, res) => {
   // Specify the path where you want to save the PDF file
   const fileName = `${Date.now()}-${Math.round(Math.random() * 1e9)}.pdf`;
 
-  const pdfPath = path.resolve("/tmp", `../public/${fileName}`);
+  const pdfPath = path.resolve("/", `../public/${fileName}`);
 
   // Write the PDF buffer to the file
   fs.writeFileSync(pdfPath, pdfBuffer);
-
-  // delete filestystem file
-  // await fs.unlink(pdfPath);
 
   // Close the browser
   await browser.close();

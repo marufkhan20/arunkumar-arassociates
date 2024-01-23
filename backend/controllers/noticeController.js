@@ -14,7 +14,7 @@ const getAllNoticesByUserIController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -28,7 +28,7 @@ const getNoticeController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -67,7 +67,7 @@ const createNewNoticeController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -150,7 +150,7 @@ const uploadNoticeInformationController = async (req, res) => {
 
     res.status(200).json({ success: true });
   } catch (err) {
-    console.error(err);
+    console.error(err?.message);
     res.status(500).json({
       errorform: err,
     });
@@ -166,7 +166,7 @@ const editNoticeController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
@@ -180,7 +180,7 @@ const deleteNoticeController = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Server error occurred!!",
+      error: err,
     });
   }
 };
